@@ -17,30 +17,21 @@
 
 package com.github.jeffbeagley.kafka.connect.transform.common;
 
-import org.apache.kafka.common.cache.Cache;
-import org.apache.kafka.common.cache.LRUCache;
-import org.apache.kafka.common.cache.SynchronizedCache;
+
 import org.apache.kafka.common.config.ConfigDef;
-import org.apache.kafka.common.config.ConfigException;
-import org.apache.kafka.common.utils.Utils;
 import org.apache.kafka.connect.connector.ConnectRecord;
 import org.apache.kafka.connect.data.Field;
 import org.apache.kafka.connect.data.Schema;
 import org.apache.kafka.connect.data.SchemaBuilder;
 import org.apache.kafka.connect.data.Struct;
-import org.apache.kafka.connect.data.Time;
-import org.apache.kafka.connect.data.Timestamp;
-import org.apache.kafka.connect.errors.ConnectException;
-import org.apache.kafka.connect.errors.DataException;
+
 import org.apache.kafka.connect.transforms.Transformation;
 import org.apache.kafka.connect.transforms.util.SchemaUtil;
 import org.apache.kafka.connect.transforms.util.SimpleConfig;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import static org.apache.kafka.connect.transforms.util.Requirements.requireMap;
 import static org.apache.kafka.connect.transforms.util.Requirements.requireStruct;
 
 public abstract class EpochtoTimestamp<R extends ConnectRecord<R>> implements Transformation<R> {
@@ -78,18 +69,15 @@ public abstract class EpochtoTimestamp<R extends ConnectRecord<R>> implements Tr
 
     }
 
-
     @Override
     public R apply(R record) {
         return applyWithSchema(record);
 
     }
 
-
     private R applyWithSchema(R record) {
         final Schema original_schema = operatingSchema(record);
         final Struct original_value = requireStruct(operatingValue(record), PURPOSE);
-
 
         //create new schema
         final SchemaBuilder transformed_schema = SchemaUtil.copySchemaBasics(original_schema, SchemaBuilder.struct());
@@ -108,7 +96,6 @@ public abstract class EpochtoTimestamp<R extends ConnectRecord<R>> implements Tr
         //manipulate values
         final Struct updatedValues = new Struct(new_schema);
         for (Field field : new_schema.fields()) {
-
             if(field.name().equals((config.field))) {
                 //translate epoch to timestamp format
                 if(original_value.get(field.name()) != "null" && original_value.get(field.name()) != null) {
@@ -133,7 +120,6 @@ public abstract class EpochtoTimestamp<R extends ConnectRecord<R>> implements Tr
         return newRecord(record, new_schema, updatedValues);
 
     }
-
 
     public static class Key<R extends ConnectRecord<R>> extends EpochtoTimestamp<R> {
         @Override

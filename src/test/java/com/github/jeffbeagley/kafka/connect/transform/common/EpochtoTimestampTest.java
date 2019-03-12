@@ -64,24 +64,23 @@ class EpochtoTimestampTest {
 
         Schema payload_schema = SchemaBuilder.struct()
                 .field("some_other_value", Schema.STRING_SCHEMA)
+                .field("value_boolean_value", Schema.BOOLEAN_SCHEMA)
                 .field("non_nullable_date", Schema.INT64_SCHEMA)
                 .build();
 
         Struct payload_values = new Struct(payload_schema);
 
         payload_values.put("some_other_value", "jeff");
+        payload_values.put("value_boolean_value", true);
         payload_values.put("non_nullable_date", DATE_PLUS_TIME_UNIX);
 
         SourceRecord transformed = xformValue.apply(new SourceRecord(null, null, "topic", 0, payload_schema, payload_values));
 
-        Schema expectedSchema = SchemaBuilder.struct()
-                .field("some_other_value", Schema.STRING_SCHEMA)
-                .field("non_nullable_date", Schema.OPTIONAL_STRING_SCHEMA)
-                .build();
+        System.out.println(transformed.valueSchema());
 
-        System.out.println((transformed.valueSchema()));
-        assertEquals(expectedSchema.toString(), transformed.valueSchema().toString());
         assertEquals(DATE_PLUS_TIME_STRING, ((Struct) transformed.value()).get("non_nullable_date"));
+        assertEquals(true, ((Struct) transformed.value()).get("value_boolean_value"));
+        assertEquals("jeff", ((Struct) transformed.value()).get("some_other_value"));
 
     }
 
@@ -93,23 +92,20 @@ class EpochtoTimestampTest {
 
         Schema payload_schema = SchemaBuilder.struct()
                 .field("some_other_value", Schema.STRING_SCHEMA)
+                .field("value_boolean_value", Schema.BOOLEAN_SCHEMA)
                 .field("nullable_date", Schema.STRING_SCHEMA)
                 .build();
 
         Struct payload_values = new Struct(payload_schema);
 
         payload_values.put("some_other_value", "jeff");
+        payload_values.put("value_boolean_value", true);
         payload_values.put("nullable_date", "null");
 
         SourceRecord transformed = xformValue.apply(new SourceRecord(null, null, "topic", 0, payload_schema, payload_values));
 
-        Schema expectedSchema = SchemaBuilder.struct()
-                .field("some_other_value", Schema.STRING_SCHEMA)
-                .field("non_nullable_date", Schema.OPTIONAL_STRING_SCHEMA)
-                .build();
-
-        assertEquals(expectedSchema, transformed.valueSchema());
         assertEquals("jeff", ((Struct) transformed.value()).get("some_other_value"));
+        assertEquals(true, ((Struct) transformed.value()).get("value_boolean_value"));
         assertEquals("null", ((Struct) transformed.value()).get("nullable_date"));
     }
 
