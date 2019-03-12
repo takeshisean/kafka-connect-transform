@@ -1,6 +1,7 @@
 package com.github.jeffbeagley.kafka.connect.transform.common;
 
 
+import org.apache.kafka.common.protocol.types.Field;
 import org.apache.kafka.connect.data.Schema;
 import org.apache.kafka.connect.data.SchemaBuilder;
 import org.apache.kafka.connect.data.Struct;
@@ -76,8 +77,6 @@ class EpochtoTimestampTest {
 
         SourceRecord transformed = xformValue.apply(new SourceRecord(null, null, "topic", 0, payload_schema, payload_values));
 
-        System.out.println(transformed.valueSchema());
-
         assertEquals(DATE_PLUS_TIME_STRING, ((Struct) transformed.value()).get("non_nullable_date"));
         assertEquals(true, ((Struct) transformed.value()).get("value_boolean_value"));
         assertEquals("jeff", ((Struct) transformed.value()).get("some_other_value"));
@@ -108,6 +107,30 @@ class EpochtoTimestampTest {
         assertEquals(true, ((Struct) transformed.value()).get("value_boolean_value"));
         assertEquals("null", ((Struct) transformed.value()).get("nullable_date"));
     }
+
+    @Test
+    public void testDateTime2() {
+        Map<String, String> config = new HashMap<>();
+        config.put(EpochtoTimestamp.FIELD_CONFIG, "datetime2_value");
+        xformValue.configure(config);
+
+        Schema payload_schema = SchemaBuilder.struct()
+                .field("datetime2_value", Schema.INT64_SCHEMA)
+                .build();
+
+        Struct payload_values = new Struct(payload_schema);
+
+        long datetime2_value = 1552395600769451400L;
+
+        payload_values.put("datetime2_value", datetime2_value);
+
+        SourceRecord transformed = xformValue.apply(new SourceRecord(null, null, "topic", 0, payload_schema, payload_values));
+
+        System.out.println(transformed.value());
+        assertEquals("2019-03-12 13:00:00.769", ((Struct) transformed.value()).get("datetime2_value"));
+
+    }
+
 
 
 }

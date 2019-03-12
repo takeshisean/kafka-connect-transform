@@ -28,9 +28,12 @@ import org.apache.kafka.connect.data.Struct;
 import org.apache.kafka.connect.transforms.Transformation;
 import org.apache.kafka.connect.transforms.util.SchemaUtil;
 import org.apache.kafka.connect.transforms.util.SimpleConfig;
+import scala.Int;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.time.*;
+import java.util.concurrent.TimeUnit;
 
 import static org.apache.kafka.connect.transforms.util.Requirements.requireStruct;
 
@@ -50,6 +53,8 @@ public abstract class EpochtoTimestamp<R extends ConnectRecord<R>> implements Tr
     private static final TimeZone UTC = TimeZone.getTimeZone("UTC");
 
     private List<String> field;
+
+    static final long NANOSECONDS_PER_SECOND = TimeUnit.SECONDS.toNanos(1);
 
     private static class Config {
         Config(String field) {
@@ -99,12 +104,17 @@ public abstract class EpochtoTimestamp<R extends ConnectRecord<R>> implements Tr
             if(field.name().equals((config.field))) {
                 //translate epoch to timestamp format
                 if(original_value.get(field.name()) != "null" && original_value.get(field.name()) != null) {
-                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SS");
-                    format.setTimeZone(UTC);
+                    //if length of date is longer than 13, then assume date is nanoseconds
+                    Long d = (Long) original_value.get(field.name());
+                    int l = String.valueOf(d).length();
 
-                    Date date = new Date( (Long) original_value.get(field.name()));
+                    String new_date;
 
-                    String new_date = format.format(date);
+                    if(l > 13) {
+                        new_date = convertNS((Long) original_value.get(field.name()));
+                    } else {
+                        new_date = convertMS((Long) original_value.get(field.name()));
+                    }
 
                     updatedValues.put(field.name(), new_date);
                 } else {
@@ -118,6 +128,24 @@ public abstract class EpochtoTimestamp<R extends ConnectRecord<R>> implements Tr
         }
 
         return newRecord(record, new_schema, updatedValues);
+
+    }
+
+    public String convertMS(Long ms) {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SS");
+        format.setTimeZone(UTC);
+
+        return format.format(ms);
+
+    }
+
+    public String convertNS(long ns) {
+        long ms = TimeUnit.NANOSECONDS.toMillis(ns);
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SS");
+        format.setTimeZone(UTC);
+
+        return format.format(ms);
 
     }
 
