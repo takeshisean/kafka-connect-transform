@@ -99,17 +99,20 @@ class TimestampConverterTest {
         Schema structWithTimestampFieldSchema = SchemaBuilder.struct()
                 .field("ts", Schema.OPTIONAL_INT64_SCHEMA)
                 .build();
+
         Struct original = new Struct(structWithTimestampFieldSchema);
         original.put("ts", null);
 
         SourceRecord transformed = xformValue.apply(new SourceRecord(null, null, "topic", 0, structWithTimestampFieldSchema, original));
 
-        System.out.println(original);
-        System.out.println(transformed);
-
         Schema expectedSchema = SchemaBuilder.struct()
                 .field("ts", Schema.OPTIONAL_STRING_SCHEMA)
                 .build();
+
+        System.out.println("original");
+        System.out.println(original);
+        System.out.println("transformed");
+        System.out.println(transformed);
 
         assertEquals(expectedSchema, transformed.valueSchema());
         assertEquals(null, ((Struct) transformed.value()).get("ts"));
