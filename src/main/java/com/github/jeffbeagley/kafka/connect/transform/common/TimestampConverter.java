@@ -1,22 +1,7 @@
-/** 
- * Licensed to the Apache Software Foundation (ASF) under one or more
- * contributor license agreements. See the NOTICE file distributed with
- * this work for additional information regarding copyright ownership.
- * The ASF licenses this file to You under the Apache License, Version 2.0
- * (the "License"); you may not use this file except in compliance with
- * the License. You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package com.github.jeffbeagley.kafka.connect.transform.common;
 
+import com.github.jeffbeagley.kafka.connect.transform.util.SchemaUtil;
+import com.github.jeffbeagley.kafka.connect.transform.util.SimpleConfig;
 import org.apache.kafka.common.cache.Cache;
 import org.apache.kafka.common.cache.LRUCache;
 import org.apache.kafka.common.cache.SynchronizedCache;
@@ -24,30 +9,15 @@ import org.apache.kafka.common.config.ConfigDef;
 import org.apache.kafka.common.config.ConfigException;
 import org.apache.kafka.common.utils.Utils;
 import org.apache.kafka.connect.connector.ConnectRecord;
-import org.apache.kafka.connect.data.Field;
-import org.apache.kafka.connect.data.Schema;
-import org.apache.kafka.connect.data.SchemaBuilder;
-import org.apache.kafka.connect.data.Struct;
-import org.apache.kafka.connect.data.Time;
-import org.apache.kafka.connect.data.Timestamp;
+import org.apache.kafka.connect.data.*;
 import org.apache.kafka.connect.errors.ConnectException;
 import org.apache.kafka.connect.errors.DataException;
-
 import org.apache.kafka.connect.transforms.Transformation;
-
-import com.github.jeffbeagley.kafka.connect.transform.util.SimpleConfig;
-import com.github.jeffbeagley.kafka.connect.transform.util.SchemaUtil;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Calendar;
+import java.util.*;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-import java.util.TimeZone;
 
 import static com.github.jeffbeagley.kafka.connect.transform.util.Requirements.requireMap;
 import static com.github.jeffbeagley.kafka.connect.transform.util.Requirements.requireStruct;
@@ -84,7 +54,7 @@ public abstract class TimestampConverter<R extends ConnectRecord<R>> implements 
     private static final String TYPE_DATE = "Date";
     private static final String TYPE_TIME = "Time";
     private static final String TYPE_TIMESTAMP = "Timestamp";
-    private static final Set<String> VALID_TYPES = new HashSet<>(Arrays.asList(TYPE_STRING, TYPE_UNIX, TYPE_DATE, TYPE_TIME, TYPE_TIMESTAMP));
+    private static final Set<String> VALID_TYPES = new HashSet<String>(Arrays.asList(TYPE_STRING, TYPE_UNIX, TYPE_DATE, TYPE_TIME, TYPE_TIMESTAMP));
 
     private static final TimeZone UTC = TimeZone.getTimeZone("UTC");
 
@@ -105,7 +75,7 @@ public abstract class TimestampConverter<R extends ConnectRecord<R>> implements 
         Object toType(Config config, Date orig);
     }
 
-    private static final Map<String, TimestampTranslator> TRANSLATORS = new HashMap<>();
+    private static final Map<String, TimestampTranslator> TRANSLATORS = new HashMap<String, TimestampTranslator>();
     static {
         TRANSLATORS.put(TYPE_STRING, new TimestampTranslator() {
             @Override
@@ -236,7 +206,7 @@ public abstract class TimestampConverter<R extends ConnectRecord<R>> implements 
         }
         String field;
         String type;
-        SimpleDateFormat format;
+        final SimpleDateFormat format;
     }
     private Config config;
     private Cache<Schema, Schema> schemaUpdateCache;
@@ -248,7 +218,7 @@ public abstract class TimestampConverter<R extends ConnectRecord<R>> implements 
         final String field = simpleConfig.getString(FIELD_CONFIG);
         final String type = simpleConfig.getString(TARGET_TYPE_CONFIG);
         String formatPattern = simpleConfig.getString(FORMAT_CONFIG);
-        schemaUpdateCache = new SynchronizedCache<>(new LRUCache<Schema, Schema>(16));
+        schemaUpdateCache = new SynchronizedCache<Schema, Schema>(new LRUCache<Schema, Schema>(16));
 
         if (!VALID_TYPES.contains(type)) {
             throw new ConfigException("Unknown timestamp type in TimestampConverter: " + type + ". Valid values are "
@@ -392,7 +362,7 @@ public abstract class TimestampConverter<R extends ConnectRecord<R>> implements 
             return newRecord(record, null, convertTimestamp(value));
         } else {
             final Map<String, Object> value = requireMap(operatingValue(record), PURPOSE);
-            final HashMap<String, Object> updatedValue = new HashMap<>(value);
+            final HashMap<String, Object> updatedValue = new HashMap<String, Object>(value);
             updatedValue.put(config.field, convertTimestamp(value.get(config.field)));
             return newRecord(record, null, updatedValue);
         }

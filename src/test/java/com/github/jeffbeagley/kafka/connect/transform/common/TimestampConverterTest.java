@@ -27,8 +27,8 @@ class TimestampConverterTest {
     private static final long DATE_PLUS_TIME_UNIX;
     private static final String STRING_DATE_FMT = "yyyy-MM-dd HH:mm:ss.SSSSSS";
 
-    private final TimestampConverter<SourceRecord> xformKey = new TimestampConverter.Key<>();
-    private final TimestampConverter<SourceRecord> xformValue = new TimestampConverter.Value<>();
+    private final TimestampConverter<SourceRecord> xformKey = new TimestampConverter.Key<SourceRecord>();
+    private final TimestampConverter<SourceRecord> xformValue = new TimestampConverter.Value<SourceRecord>();
 
     static {
         EPOCH = GregorianCalendar.getInstance(UTC);
@@ -62,7 +62,7 @@ class TimestampConverterTest {
     // back into smalldatetime format for SQL to accept
     @Test
     public void testUnixtoTimestampwithFormatfromField() {
-        Map<String, String> config = new HashMap<>();
+        Map<String, String> config = new HashMap<String, String>();
         config.put(TimestampConverter.TARGET_TYPE_CONFIG, "Timestamp");
         config.put(TimestampConverter.FORMAT_CONFIG, STRING_DATE_FMT);
         config.put(TimestampConverter.FIELD_CONFIG, "ts");
@@ -90,7 +90,7 @@ class TimestampConverterTest {
 
     @Test
     public void testNullUnixtoTimestampwithFormatfromField() {
-        Map<String, String> config = new HashMap<>();
+        Map<String, String> config = new HashMap<String, String>();
         config.put(TimestampConverter.TARGET_TYPE_CONFIG, "Timestamp");
         config.put(TimestampConverter.FORMAT_CONFIG, STRING_DATE_FMT);
         config.put(TimestampConverter.FIELD_CONFIG, "ts");
@@ -115,7 +115,7 @@ class TimestampConverterTest {
         System.out.println(transformed);
 
         assertEquals(expectedSchema, transformed.valueSchema());
-        assertEquals(null, ((Struct) transformed.value()).get("ts"));
+        assertNull(((Struct) transformed.value()).get("ts"));
     }
 
 }

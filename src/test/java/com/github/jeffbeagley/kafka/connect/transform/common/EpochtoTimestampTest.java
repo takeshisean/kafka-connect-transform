@@ -24,8 +24,8 @@ class EpochtoTimestampTest {
     private static final String STRING_DATE_FMT = "yyyy-MM-dd HH:mm:ss.SS";
     private static final String DATE_PLUS_TIME_STRING;
 
-    private final EpochtoTimestamp<SourceRecord> xformKey = new EpochtoTimestamp.Key<>();
-    private final EpochtoTimestamp<SourceRecord> xformValue = new EpochtoTimestamp.Value<>();
+    private final EpochtoTimestamp<SourceRecord> xformKey = new EpochtoTimestamp.Key<SourceRecord>();
+    private final EpochtoTimestamp<SourceRecord> xformValue = new EpochtoTimestamp.Value<SourceRecord>();
 
     static {
         EPOCH = GregorianCalendar.getInstance(UTC);
@@ -59,7 +59,7 @@ class EpochtoTimestampTest {
 
     @Test
     public void UnixTimestampConverts() {
-        Map<String, String> config = new HashMap<>();
+        Map<String, String> config = new HashMap<String, String>();
         config.put(EpochtoTimestamp.FIELD_CONFIG, "non_nullable_date");
         xformValue.configure(config);
 
@@ -85,7 +85,7 @@ class EpochtoTimestampTest {
 
     @Test
     public void NullTimestampisDropped() {
-        Map<String, String> config = new HashMap<>();
+        Map<String, String> config = new HashMap<String, String>();
         config.put(EpochtoTimestamp.FIELD_CONFIG, "nullable_date");
         xformValue.configure(config);
 
@@ -110,7 +110,7 @@ class EpochtoTimestampTest {
 
     @Test
     public void testDateTime2() {
-        Map<String, String> config = new HashMap<>();
+        Map<String, String> config = new HashMap<String, String>();
         config.put(EpochtoTimestamp.FIELD_CONFIG, "datetime2_value");
         xformValue.configure(config);
 
