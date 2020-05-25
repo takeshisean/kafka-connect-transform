@@ -35,7 +35,8 @@ import java.util.*;
 import java.time.*;
 import java.util.concurrent.TimeUnit;
 
-import static org.apache.kafka.connect.transforms.util.Requirements.requireStruct;
+import static org.apache.kafka.connect.transforms.util.Requirements.*;
+//import static org.apache.kafka.connect.transforms.util.Requirements.requireStruct;
 
 public abstract class EpochtoTimestamp<R extends ConnectRecord<R>> implements Transformation<R> {
 
