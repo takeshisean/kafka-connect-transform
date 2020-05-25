@@ -143,7 +143,7 @@ public abstract class EpochtoTimestamp<R extends ConnectRecord<R>> implements Tr
     public String convertNS(long ns) {
         long ms = TimeUnit.NANOSECONDS.toMillis(ns);
 
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SS");
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
         format.setTimeZone(UTC);
 
         return format.format(ms);
