@@ -25,9 +25,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dcb9ea50-4775-4e42-b2c7-25768d8763fc" name="Default Changelist" comment="First commit">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jeffbeagley/kafka/connect/transform/common/EpochtoTimestamp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jeffbeagley/kafka/connect/transform/common/EpochtoTimestamp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/github/jeffbeagley/kafka/connect/transform/common/EpochtoTimestampTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/github/jeffbeagley/kafka/connect/transform/common/EpochtoTimestampTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/github/jeffbeagley/kafka/connect/transform/common/EpochtoTimestamp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/github/jeffbeagley/kafka/connect/transform/common/EpochtoTimestamp.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,7 +115,23 @@
       <recent name="$PROJECT_DIR$/src" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TimestampConverterTest.testNullUnixtoTimestampwithFormatfromField">
+  <component name="RunManager" selected="JUnit.EpochtoTimestampTest.testDateTime3">
+    <configuration name="EpochtoTimestampTest.testDateTime3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="kafka-connect-transform" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.github.jeffbeagley.kafka.connect.transform.common.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.github.jeffbeagley.kafka.connect.transform.common" />
+      <option name="MAIN_CLASS_NAME" value="com.github.jeffbeagley.kafka.connect.transform.common.EpochtoTimestampTest" />
+      <option name="METHOD_NAME" value="testDateTime3" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TimestampConverterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="com.github.jeffbeagley.kafka.connect.transform" />
       <extension name="coverage">
@@ -181,6 +198,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.EpochtoTimestampTest.testDateTime3" />
         <item itemvalue="JUnit.TimestampConverterTest.testNullUnixtoTimestampwithFormatfromField" />
         <item itemvalue="JUnit.TimestampConverterTest" />
         <item itemvalue="JUnit.TimestampConverterTest.testWithSchemaNullToTimestamp" />
@@ -227,7 +245,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590424311970</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Updated SimpleDateFormat and removed commented &quot;toMilis&quot; convertion.">
+      <created>1590453436861</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1590453436861</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -250,7 +275,8 @@
     <MESSAGE value="added kafka-connect-transforms-1.0-SNAPSHOT-jar-with-dependencies.jar" />
     <MESSAGE value="updated with kafka-connect-transforms-1.0-SNAPSHOT-jar-with-dependencies.jar" />
     <MESSAGE value="updated jar file" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated jar file" />
+    <MESSAGE value="Updated SimpleDateFormat and removed commented &quot;toMilis&quot; convertion." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated SimpleDateFormat and removed commented &quot;toMilis&quot; convertion." />
   </component>
   <component name="WindowStateProjectService">
     <state x="2488" y="227" width="679" height="274" key="#Notifications" timestamp="1590129223836">
@@ -273,21 +299,25 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1590331435281" />
-    <state width="1323" height="130" key="GridCell.Tab.0.bottom" timestamp="1590161783256">
-      <screen x="1920" y="0" width="1366" height="728" />
+    <state width="1877" height="208" key="GridCell.Tab.0.bottom" timestamp="1590460136358">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="208" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1590460136358" />
     <state width="1323" height="130" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1590161783256" />
-    <state width="1323" height="130" key="GridCell.Tab.0.center" timestamp="1590161783256">
-      <screen x="1920" y="0" width="1366" height="728" />
+    <state width="1877" height="208" key="GridCell.Tab.0.center" timestamp="1590460136358">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="208" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1590460136358" />
     <state width="1323" height="130" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1590161783256" />
-    <state width="1323" height="130" key="GridCell.Tab.0.left" timestamp="1590161783255">
-      <screen x="1920" y="0" width="1366" height="728" />
+    <state width="1877" height="208" key="GridCell.Tab.0.left" timestamp="1590460136358">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="208" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1590460136358" />
     <state width="1323" height="130" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1590161783255" />
-    <state width="1323" height="130" key="GridCell.Tab.0.right" timestamp="1590161783256">
-      <screen x="1920" y="0" width="1366" height="728" />
+    <state width="1877" height="208" key="GridCell.Tab.0.right" timestamp="1590460136358">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1877" height="208" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1590460136358" />
     <state width="1323" height="130" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1590161783256" />
     <state x="2133" y="19" key="Maven.ArtifactSearchDialog" timestamp="1590119566586">
       <screen x="1920" y="0" width="1366" height="728" />
@@ -298,10 +328,10 @@
     </state>
     <state x="195" y="17" key="SettingsEditor/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1590393838671" />
     <state x="2059" y="12" width="916" height="708" key="SettingsEditor/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1590422540039" />
-    <state x="387" y="139" key="Vcs.Push.Dialog.v2" timestamp="1590424315330">
+    <state x="387" y="139" key="Vcs.Push.Dialog.v2" timestamp="1590453439666">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="387" y="139" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1590424315330" />
+    <state x="387" y="139" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1590453439666" />
     <state x="2195" y="97" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1590129726414" />
     <state x="637" y="308" key="git4idea.merge.GitPullDialog" timestamp="1590395699708">
       <screen x="0" y="0" width="1920" height="1040" />

@@ -10,7 +10,9 @@ import org.apache.kafka.connect.source.SourceRecord;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
+import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -131,6 +133,24 @@ class EpochtoTimestampTest {
 
     }
 
+    @Test
+    public void testDateTime3() {
+        long ns = Long.parseLong("1371427200000000000");
+//        long datetime2_value = 1552395600769451400L;
+        long ms = TimeUnit.NANOSECONDS.toMillis(ns);
 
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSSS");
+        format.setTimeZone(UTC);
+
+        System.out.println(format.format(ms));
+
+//        Date now = new Date();
+//        System.out.println(now);
+//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSSS");
+//        String formattedDate = format.format(now);
+//
+//        // print that date
+//        System.out.println(formattedDate);
+    }
 
 }
