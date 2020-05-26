@@ -14,6 +14,8 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
+import java.time.* ;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class EpochtoTimestampTest {
@@ -135,18 +137,18 @@ class EpochtoTimestampTest {
 
     @Test
     public void testDateTime3() {
-        long ns = Long.parseLong("1371427200000000000");
-//        long datetime2_value = 1552395600769451400L;
-
-        System.out.println(convertNS(ns));
-
-//        Date now = new Date();
-//        System.out.println(now);
-//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSSS");
-//        String formattedDate = format.format(now);
+//        long ns = Long.parseLong("1473724800000000000");
+////        long datetime2_value = 1552395600769451400L;
 //
-//        // print that date
-//        System.out.println(formattedDate);
+//        System.out.println(convertNS(ns));
+
+        Date now = new Date();
+        System.out.println(now);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSSS");
+        String formattedDate = format.format(now);
+
+        // print that date
+        System.out.println(formattedDate);
     }
 
     private String convertNS(long ns) {
@@ -157,6 +159,25 @@ class EpochtoTimestampTest {
 
         return format.format(ms);
 
+    }
+
+
+    @Test
+    public void testDateTime4() {
+        long unix_seconds = Long.parseLong("1382659200000000000");
+        System.out.println(unix_seconds);
+        long ms = TimeUnit.NANOSECONDS.toMillis(unix_seconds);
+        System.out.println(ms);
+
+        Date date = new Date(unix_seconds);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSSS");
+        format.setTimeZone(UTC);
+        String formattedDate = format.format(date);
+
+//        Instant instant = Instant.ofEpochSecond( unix_seconds, nanoOffset ) ;
+//        Instant instant = Instant.ofEpochSecond(unix_seconds) ;
+
+        System.out.println(formattedDate);
     }
 
 }
