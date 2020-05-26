@@ -161,23 +161,29 @@ class EpochtoTimestampTest {
 
     }
 
-
     @Test
     public void testDateTime4() {
         long unix_seconds = Long.parseLong("1382659200000000000");
-        System.out.println(unix_seconds);
-        long ms = TimeUnit.NANOSECONDS.toMillis(unix_seconds);
-        System.out.println(ms);
 
-        Date date = new Date(unix_seconds);
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSSS");
-        format.setTimeZone(UTC);
-        String formattedDate = format.format(date);
+//        long ms = TimeUnit.NANOSECONDS.toMillis(unix_seconds);
+
+//        Date date = new Date(unix_seconds);
+//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSSS");
+//        format.setTimeZone(UTC);
+//        String formattedDate = format.format(date);
+
+//        System.out.println(formattedDate);
 
 //        Instant instant = Instant.ofEpochSecond( unix_seconds, nanoOffset ) ;
-//        Instant instant = Instant.ofEpochSecond(unix_seconds) ;
+        Instant instant = Instant.ofEpochSecond(0, unix_seconds);
+        System.out.println(instant);
 
+        Date myDate = Date.from(instant);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSSS");
+        formatter.setTimeZone(UTC);
+        String formattedDate = formatter.format(myDate);
         System.out.println(formattedDate);
+
     }
 
 }
