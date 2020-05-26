@@ -25,12 +25,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dcb9ea50-4775-4e42-b2c7-25768d8763fc" name="Default Changelist" comment="First commit">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jeffbeagley/kafka/connect/transform/common/EpochtoTimestamp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jeffbeagley/kafka/connect/transform/common/EpochtoTimestamp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/kafka-connect-transforms-1.0-SNAPSHOT-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/kafka-connect-transforms-1.0-SNAPSHOT-jar-with-dependencies.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/kafka-connect-transforms-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/kafka-connect-transforms-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -223,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1590395738364</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="updated jar file">
+      <created>1590424311970</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1590424311970</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -245,7 +249,8 @@
     <MESSAGE value="First commit" />
     <MESSAGE value="added kafka-connect-transforms-1.0-SNAPSHOT-jar-with-dependencies.jar" />
     <MESSAGE value="updated with kafka-connect-transforms-1.0-SNAPSHOT-jar-with-dependencies.jar" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated with kafka-connect-transforms-1.0-SNAPSHOT-jar-with-dependencies.jar" />
+    <MESSAGE value="updated jar file" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated jar file" />
   </component>
   <component name="WindowStateProjectService">
     <state x="2488" y="227" width="679" height="274" key="#Notifications" timestamp="1590129223836">
@@ -293,10 +298,10 @@
     </state>
     <state x="195" y="17" key="SettingsEditor/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1590393838671" />
     <state x="2059" y="12" width="916" height="708" key="SettingsEditor/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1590422540039" />
-    <state x="387" y="139" key="Vcs.Push.Dialog.v2" timestamp="1590395739735">
+    <state x="387" y="139" key="Vcs.Push.Dialog.v2" timestamp="1590424315330">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="387" y="139" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1590395739735" />
+    <state x="387" y="139" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1590424315330" />
     <state x="2195" y="97" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1590129726414" />
     <state x="637" y="308" key="git4idea.merge.GitPullDialog" timestamp="1590395699708">
       <screen x="0" y="0" width="1920" height="1040" />
