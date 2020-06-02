@@ -8,6 +8,8 @@ mvn package -e
 2) Look for the output jar file in "kafka-connect-transform\target":
 For example "kafka-connect-transforms-1.2-SNAPSHOT-jar-with-dependencies.jar"
 
+*Note: Update “version” number in pom.xml and rebuild project before running command.
+
 ### How to use in a Kafka Connector Config
 ```
 "transforms": "epoch_timestamp",
