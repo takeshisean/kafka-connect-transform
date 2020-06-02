@@ -87,16 +87,21 @@ public abstract class EpochtoTimestamp<R extends ConnectRecord<R>> implements Tr
             if(field.name().equals((config.field))) {
                 //translate epoch to timestamp format
                 if(original_value.get(field.name()) != "null" && original_value.get(field.name()) != null) {
-                    //if length of date is longer than 13, then assume date is nanoseconds
+                    //Examples of epoch date format:
+                    //        1382659200000000000 => Nanoseconds (19 digits)
+                    //        1483232054547470 => Microseconds (16 digits)
+                    //        1590969600021 => Milliseconds (13 digits)
                     Long d = (Long) original_value.get(field.name());
                     int l = String.valueOf(d).length();
 
                     String new_date;
 
-                    if(l > 13) {
-                        new_date = convertNS((Long) original_value.get(field.name()));
+                    if(l == 19) {
+                        new_date = convertNanos((Long) original_value.get(field.name()));
+                    } else if(l == 16) {
+                        new_date = convertMicros((Long) original_value.get(field.name()));
                     } else {
-                        new_date = convertMS((Long) original_value.get(field.name()));
+                        new_date = convertMillis((Long) original_value.get(field.name()));
                     }
 
                     updatedValues.put(field.name(), new_date);
@@ -114,7 +119,7 @@ public abstract class EpochtoTimestamp<R extends ConnectRecord<R>> implements Tr
 
     }
 
-    public String convertMS(Long ms) {
+    public String convertMillis(Long ms) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SS");
         format.setTimeZone(UTC);
 
@@ -122,15 +127,32 @@ public abstract class EpochtoTimestamp<R extends ConnectRecord<R>> implements Tr
 
     }
 
-    public String convertNS(long ns) {
-        Instant instant = Instant.ofEpochSecond(0, ns);
+    public String convertMicros(long ms) {
+        Instant instant = getInstantFromMicros(ms);
+
+        Date date = Date.from(instant);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSS");
+        format.setTimeZone(UTC);
+
+        return format.format(date);
+    }
+
+    public String convertNanos(long ns) {
+        Instant instant = getInstantFromNanos(ns);
 
         Date date = Date.from(instant);
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSSS");
         format.setTimeZone(UTC);
 
         return format.format(date);
+    }
 
+    static Instant getInstantFromMicros(Long microsSinceEpoch) {
+        return Instant.ofEpochSecond(TimeUnit.MICROSECONDS.toSeconds(microsSinceEpoch), TimeUnit.MICROSECONDS.toNanos(Math.floorMod(microsSinceEpoch, TimeUnit.SECONDS.toMicros(1))));
+    }
+
+    static Instant getInstantFromNanos(Long nanosSinceEpoch) {
+        return Instant.ofEpochSecond(0L, nanosSinceEpoch);
     }
 
     public static class Key<R extends ConnectRecord<R>> extends EpochtoTimestamp<R> {

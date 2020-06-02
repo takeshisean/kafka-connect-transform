@@ -28,8 +28,8 @@ class EpochtoTimestampTest {
     private static final String STRING_DATE_FMT = "yyyy-MM-dd HH:mm:ss.SS";
     private static final String DATE_PLUS_TIME_STRING;
 
-    private final EpochtoTimestamp<SourceRecord> xformKey = new EpochtoTimestamp.Key<SourceRecord>();
-    private final EpochtoTimestamp<SourceRecord> xformValue = new EpochtoTimestamp.Value<SourceRecord>();
+    private final EpochtoTimestamp<SourceRecord> xformKey = new EpochtoTimestamp.Key<>();
+    private final EpochtoTimestamp<SourceRecord> xformValue = new EpochtoTimestamp.Value<>();
 
     static {
         EPOCH = GregorianCalendar.getInstance(UTC);
@@ -63,7 +63,7 @@ class EpochtoTimestampTest {
 
     @Test
     public void UnixTimestampConverts() {
-        Map<String, String> config = new HashMap<String, String>();
+        Map<String, String> config = new HashMap<>();
         config.put(EpochtoTimestamp.FIELD_CONFIG, "non_nullable_date");
         xformValue.configure(config);
 
@@ -89,7 +89,7 @@ class EpochtoTimestampTest {
 
     @Test
     public void NullTimestampisDropped() {
-        Map<String, String> config = new HashMap<String, String>();
+        Map<String, String> config = new HashMap<>();
         config.put(EpochtoTimestamp.FIELD_CONFIG, "nullable_date");
         xformValue.configure(config);
 
@@ -114,7 +114,7 @@ class EpochtoTimestampTest {
 
     @Test
     public void testDateTime2() {
-        Map<String, String> config = new HashMap<String, String>();
+        Map<String, String> config = new HashMap<>();
         config.put(EpochtoTimestamp.FIELD_CONFIG, "datetime2_value");
         xformValue.configure(config);
 
@@ -163,27 +163,64 @@ class EpochtoTimestampTest {
 
     @Test
     public void testDateTime4() {
-        long unix_seconds = Long.parseLong("1382659200000000000");
+//        1382659200000000000 => Nanoseconds (19 digits)
+//        1483232054547470 => Microseconds (16 digits)
+//        1590969600021 => Milliseconds (13 digits)
 
-//        long ms = TimeUnit.NANOSECONDS.toMillis(unix_seconds);
+        long unix_seconds = Long.parseLong("1590969600021");
 
-//        Date date = new Date(unix_seconds);
-//        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSSS");
-//        format.setTimeZone(UTC);
-//        String formattedDate = format.format(date);
+// ==========================================================================================================
+        Instant instant;
+        int l = String.valueOf(unix_seconds).length();
 
+        if(l == 19) {
+            instant = getInstantFromNanos(unix_seconds);
+            System.out.println(instant);
+
+            Date myDate = Date.from(instant);
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSSS");
+            formatter.setTimeZone(UTC);
+
+            String formattedDate = formatter.format(myDate);
+            System.out.println(formattedDate);
+        } else if (l == 16) {
+            instant = getInstantFromMicros(unix_seconds);
+            System.out.println(instant);
+
+            Date myDate = Date.from(instant);
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSS");
+            formatter.setTimeZone(UTC);
+
+            String formattedDate = formatter.format(myDate);
+            System.out.println(formattedDate);
+        } else {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SS");
+            formatter.setTimeZone(UTC);
+
+            String formattedDate = formatter.format(unix_seconds);
+            System.out.println(formattedDate);
+        }
+// ==========================================================================================================
+
+//        Instant instant = getInstantFromMicros(unix_seconds);
+//        Instant instant = getInstantFromNanos(unix_seconds);
+
+//        System.out.println(instant);
+
+//        Date myDate = Date.from(instant);
+//        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSSS");
+//        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSS");
+//        formatter.setTimeZone(UTC);
+//        String formattedDate = formatter.format(myDate);
 //        System.out.println(formattedDate);
+    }
 
-//        Instant instant = Instant.ofEpochSecond( unix_seconds, nanoOffset ) ;
-        Instant instant = Instant.ofEpochSecond(0, unix_seconds);
-        System.out.println(instant);
+    static Instant getInstantFromMicros(Long microsSinceEpoch) {
+        return Instant.ofEpochSecond(TimeUnit.MICROSECONDS.toSeconds(microsSinceEpoch), TimeUnit.MICROSECONDS.toNanos(Math.floorMod(microsSinceEpoch, TimeUnit.SECONDS.toMicros(1))));
+    }
 
-        Date myDate = Date.from(instant);
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSSSSSS");
-        formatter.setTimeZone(UTC);
-        String formattedDate = formatter.format(myDate);
-        System.out.println(formattedDate);
-
+    static Instant getInstantFromNanos(Long nanosSinceEpoch) {
+        return Instant.ofEpochSecond(0L, nanosSinceEpoch);
     }
 
 }
