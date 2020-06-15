@@ -170,8 +170,9 @@ class EpochtoTimestampTest {
 //        14025 =>   2008-05-26
 //        17749 =>   Aug 06 2018
 //        18386 =>   2020-05-04
+//        2922
 
-        long unix_seconds = Long.parseLong("18386");
+        long unix_seconds = Long.parseLong("2922");
 
 // ==========================================================================================================
         Instant instant;
@@ -197,11 +198,14 @@ class EpochtoTimestampTest {
 
             String formattedDate = formatter.format(myDate);
             System.out.println(formattedDate);
-        } else if(l == 5) {
+        } else if(l == 4) {
 //            LocalDate lt = LocalDate.now();
 //            int toEpochDay = (int) lt.toEpochDay();
 //            System.out.println(toEpochDay);
             // ==========================================================================
+//            LocalDate date = Conversions.toLocalDate(value);
+//            new java.util.Date (epoch*1000)
+
             LocalDate local_date = LocalDate.ofEpochDay(unix_seconds);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             String formattedString = local_date.format(formatter);

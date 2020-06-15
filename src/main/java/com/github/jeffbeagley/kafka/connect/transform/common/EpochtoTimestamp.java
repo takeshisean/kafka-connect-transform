@@ -85,29 +85,34 @@ public abstract class EpochtoTimestamp<R extends ConnectRecord<R>> implements Tr
         //manipulate values
         final Struct updatedValues = new Struct(new_schema);
         for (Field field : new_schema.fields()) {
-            if(field.name().equals((config.field))) {
+            if (field.name().equals((config.field))) {
                 //translate epoch to timestamp format
-                if(original_value.get(field.name()) != "null" && original_value.get(field.name()) != null) {
-                    //Examples of epoch date format:
+                if (original_value.get(field.name()) != "null" &&
+                        original_value.get(field.name()) != null &&
+                        original_value.get(field.name()) instanceof String) {
+                    // Examples of epoch date format:
                     //        1382659200000000000 => Nanoseconds (19 digits)
                     //        1483232054547470 => Microseconds (16 digits)
                     //        1590969600021 => Milliseconds (13 digits)
                     String new_date;
 
-                    if(original_value.get(field.name()) instanceof Integer) {
-                        new_date = convertEpochDay(Long.valueOf(original_value.get(field.name()).toString()));
-                    } else {
-                        Long d = (Long) original_value.get(field.name());
-                        int l = String.valueOf(d).length();
+                    Long d = (Long) original_value.get(field.name());
+                    int l = String.valueOf(d).length();
 
-                        if (l == 19) {
-                            new_date = convertNanos((Long) original_value.get(field.name()));
-                        } else if (l == 16) {
-                            new_date = convertMicros((Long) original_value.get(field.name()));
-                        } else {
-                            new_date = convertMillis((Long) original_value.get(field.name()));
-                        }
+                    if (l == 19) {
+                        new_date = convertNanos((Long) original_value.get(field.name()));
+                    } else if (l == 16) {
+                        new_date = convertMicros((Long) original_value.get(field.name()));
+                    } else {
+                        new_date = convertMillis((Long) original_value.get(field.name()));
                     }
+
+                    updatedValues.put(field.name(), new_date);
+                } else if (original_value.get(field.name()) != "null" &&
+                        original_value.get(field.name()) != null &&
+                        original_value.get(field.name()) instanceof Integer) {
+                    String new_date;
+                    new_date = convertEpochDay(Long.valueOf(original_value.get(field.name()).toString()));
 
                     updatedValues.put(field.name(), new_date);
                 } else {
