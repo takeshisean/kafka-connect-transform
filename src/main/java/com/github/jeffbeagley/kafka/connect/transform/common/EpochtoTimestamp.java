@@ -95,7 +95,7 @@ public abstract class EpochtoTimestamp<R extends ConnectRecord<R>> implements Tr
                     String new_date;
 
                     if(original_value.get(field.name()) instanceof Integer) {
-                        new_date = convertEpochDay((Long) original_value.get(field.name()));
+                        new_date = convertEpochDay(Long.valueOf(original_value.get(field.name()).toString()));
                     } else {
                         Long d = (Long) original_value.get(field.name());
                         int l = String.valueOf(d).length();
