@@ -92,19 +92,21 @@ public abstract class EpochtoTimestamp<R extends ConnectRecord<R>> implements Tr
                     //        1382659200000000000 => Nanoseconds (19 digits)
                     //        1483232054547470 => Microseconds (16 digits)
                     //        1590969600021 => Milliseconds (13 digits)
-                    Long d = (Long) original_value.get(field.name());
-                    int l = String.valueOf(d).length();
-
                     String new_date;
 
-                    if(l == 19) {
-                        new_date = convertNanos((Long) original_value.get(field.name()));
-                    } else if(l == 16) {
-                        new_date = convertMicros((Long) original_value.get(field.name()));
-                    } else if(l == 5) {
+                    if(original_value.get(field.name()) instanceof Integer) {
                         new_date = convertEpochDay((Long) original_value.get(field.name()));
                     } else {
-                        new_date = convertMillis((Long) original_value.get(field.name()));
+                        Long d = (Long) original_value.get(field.name());
+                        int l = String.valueOf(d).length();
+
+                        if (l == 19) {
+                            new_date = convertNanos((Long) original_value.get(field.name()));
+                        } else if (l == 16) {
+                            new_date = convertMicros((Long) original_value.get(field.name()));
+                        } else {
+                            new_date = convertMillis((Long) original_value.get(field.name()));
+                        }
                     }
 
                     updatedValues.put(field.name(), new_date);
