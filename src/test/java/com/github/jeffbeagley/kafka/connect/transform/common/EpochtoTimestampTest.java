@@ -11,6 +11,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -166,8 +167,11 @@ class EpochtoTimestampTest {
 //        1382659200000000000 => Nanoseconds (19 digits)
 //        1483232054547470 => Microseconds (16 digits)
 //        1590969600021 => Milliseconds (13 digits)
+//        14025 =>   2008-05-26
+//        17749 =>   Aug 06 2018
+//        18386 =>   2020-05-04
 
-        long unix_seconds = Long.parseLong("1590969600021");
+        long unix_seconds = Long.parseLong("18386");
 
 // ==========================================================================================================
         Instant instant;
@@ -193,7 +197,17 @@ class EpochtoTimestampTest {
 
             String formattedDate = formatter.format(myDate);
             System.out.println(formattedDate);
-        } else {
+        } else if(l == 5) {
+//            LocalDate lt = LocalDate.now();
+//            int toEpochDay = (int) lt.toEpochDay();
+//            System.out.println(toEpochDay);
+            // ==========================================================================
+            LocalDate local_date = LocalDate.ofEpochDay(unix_seconds);
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            String formattedString = local_date.format(formatter);
+
+            System.out.println(formattedString);
+        }  else {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SS");
             formatter.setTimeZone(UTC);
 

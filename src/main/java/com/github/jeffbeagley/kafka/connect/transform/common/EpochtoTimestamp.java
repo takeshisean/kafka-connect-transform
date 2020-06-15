@@ -13,6 +13,7 @@ import org.apache.kafka.connect.transforms.util.SimpleConfig;
 import scala.Int;
 
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.time.*;
 import java.util.concurrent.TimeUnit;
@@ -100,6 +101,8 @@ public abstract class EpochtoTimestamp<R extends ConnectRecord<R>> implements Tr
                         new_date = convertNanos((Long) original_value.get(field.name()));
                     } else if(l == 16) {
                         new_date = convertMicros((Long) original_value.get(field.name()));
+                    } else if(l == 5) {
+                        new_date = convertEpochDay((Long) original_value.get(field.name()));
                     } else {
                         new_date = convertMillis((Long) original_value.get(field.name()));
                     }
@@ -116,6 +119,14 @@ public abstract class EpochtoTimestamp<R extends ConnectRecord<R>> implements Tr
         }
 
         return newRecord(record, new_schema, updatedValues);
+
+    }
+
+    public String convertEpochDay(Long ms) {
+        LocalDate local_date = LocalDate.ofEpochDay(ms);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        return local_date.format(formatter);
 
     }
 
