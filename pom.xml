@@ -6,7 +6,7 @@
 
     <groupId>com.github.jeffbeagley.kafka.connect.transform</groupId>
     <artifactId>kafka-connect-transforms</artifactId>
-    <version>1.8-SNAPSHOT</version>
+    <version>1.9-SNAPSHOT</version>
 
     <dependencies>
         <dependency>

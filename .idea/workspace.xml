@@ -24,10 +24,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcb9ea50-4775-4e42-b2c7-25768d8763fc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="dcb9ea50-4775-4e42-b2c7-25768d8763fc" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -350,7 +347,21 @@
       <option name="project" value="LOCAL" />
       <updated>1592235705651</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Revert &quot;applyWithSchema&quot; code back to version 1.5.">
+      <created>1593065876865</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1593065876865</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Revert &quot;applyWithSchema&quot; code back to version 1.5.">
+      <created>1593065978840</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1593065978840</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -387,7 +398,8 @@
     <MESSAGE value="Updated kafka-connect-transform version to 1.5." />
     <MESSAGE value="Updated kafka-connect-transform to version 1.6." />
     <MESSAGE value="Updated kafka-connect-transform to version 1.7." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated kafka-connect-transform to version 1.7." />
+    <MESSAGE value="Revert &quot;applyWithSchema&quot; code back to version 1.5." />
+    <option name="LAST_COMMIT_MESSAGE" value="Revert &quot;applyWithSchema&quot; code back to version 1.5." />
   </component>
   <component name="WindowStateProjectService">
     <state x="2488" y="227" width="679" height="274" key="#Notifications" timestamp="1590129223836">
@@ -463,12 +475,12 @@
     </state>
     <state x="195" y="17" key="SettingsEditor/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1590393838671" />
     <state x="2084" y="20" width="916" height="708" key="SettingsEditor/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1591861010050" />
-    <state x="2195" y="97" key="Vcs.Push.Dialog.v2" timestamp="1592235707267">
+    <state x="2195" y="97" key="Vcs.Push.Dialog.v2" timestamp="1593065982453">
       <screen x="1920" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1592189728056" />
     <state x="387" y="139" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1591079300032" />
-    <state x="2195" y="97" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1592235707267" />
+    <state x="2195" y="97" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1593065982453" />
     <state x="2310" y="97" width="660" height="534" key="find.popup" timestamp="1591857037510">
       <screen x="1920" y="0" width="1366" height="728" />
     </state>
