@@ -25,14 +25,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dcb9ea50-4775-4e42-b2c7-25768d8763fc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/github/jeffbeagley/kafka/connect/transform/common/EpochtoTimestamp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/github/jeffbeagley/kafka/connect/transform/common/EpochtoTimestamp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/github/jeffbeagley/kafka/connect/transform/common/EpochtoTimestampTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/github/jeffbeagley/kafka/connect/transform/common/EpochtoTimestampTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/github/jeffbeagley/kafka/connect/transform/common/EpochtoTimestamp$Key.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/github/jeffbeagley/kafka/connect/transform/common/EpochtoTimestamp$Key.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/github/jeffbeagley/kafka/connect/transform/common/EpochtoTimestamp$Value.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/github/jeffbeagley/kafka/connect/transform/common/EpochtoTimestamp$Value.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/github/jeffbeagley/kafka/connect/transform/common/EpochtoTimestamp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/github/jeffbeagley/kafka/connect/transform/common/EpochtoTimestamp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/github/jeffbeagley/kafka/connect/transform/common/EpochtoTimestampTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/github/jeffbeagley/kafka/connect/transform/common/EpochtoTimestampTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -349,7 +343,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592202837341</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Updated kafka-connect-transform to version 1.7.">
+      <created>1592235705651</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1592235705651</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -385,7 +386,8 @@
     <MESSAGE value="updated jar file to 1.4." />
     <MESSAGE value="Updated kafka-connect-transform version to 1.5." />
     <MESSAGE value="Updated kafka-connect-transform to version 1.6." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated kafka-connect-transform to version 1.6." />
+    <MESSAGE value="Updated kafka-connect-transform to version 1.7." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated kafka-connect-transform to version 1.7." />
   </component>
   <component name="WindowStateProjectService">
     <state x="2488" y="227" width="679" height="274" key="#Notifications" timestamp="1590129223836">
@@ -412,46 +414,46 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1591800077320" />
-    <state width="1323" height="223" key="GridCell.Tab.0.bottom" timestamp="1592214825415">
+    <state width="1323" height="223" key="GridCell.Tab.0.bottom" timestamp="1592237098737">
       <screen x="1920" y="0" width="1366" height="728" />
     </state>
     <state width="1877" height="208" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1592156179910" />
-    <state width="1323" height="223" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1592214825415" />
-    <state width="1323" height="223" key="GridCell.Tab.0.center" timestamp="1592214825415">
+    <state width="1323" height="223" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1592237098737" />
+    <state width="1323" height="223" key="GridCell.Tab.0.center" timestamp="1592237098736">
       <screen x="1920" y="0" width="1366" height="728" />
     </state>
     <state width="1877" height="208" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1592156179909" />
-    <state width="1323" height="223" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1592214825415" />
-    <state width="1323" height="223" key="GridCell.Tab.0.left" timestamp="1592214825415">
+    <state width="1323" height="223" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1592237098736" />
+    <state width="1323" height="223" key="GridCell.Tab.0.left" timestamp="1592237098736">
       <screen x="1920" y="0" width="1366" height="728" />
     </state>
     <state width="1877" height="208" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1592156179909" />
-    <state width="1323" height="223" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1592214825415" />
-    <state width="1323" height="223" key="GridCell.Tab.0.right" timestamp="1592214825415">
+    <state width="1323" height="223" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1592237098736" />
+    <state width="1323" height="223" key="GridCell.Tab.0.right" timestamp="1592237098737">
       <screen x="1920" y="0" width="1366" height="728" />
     </state>
     <state width="1877" height="208" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1592156179910" />
-    <state width="1323" height="223" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1592214825415" />
-    <state width="1323" height="223" key="GridCell.Tab.1.bottom" timestamp="1592214825415">
+    <state width="1323" height="223" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1592237098737" />
+    <state width="1323" height="223" key="GridCell.Tab.1.bottom" timestamp="1592237098738">
       <screen x="1920" y="0" width="1366" height="728" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1591079319667" />
-    <state width="1323" height="223" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1592214825415" />
-    <state width="1323" height="223" key="GridCell.Tab.1.center" timestamp="1592214825415">
+    <state width="1323" height="223" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1592237098738" />
+    <state width="1323" height="223" key="GridCell.Tab.1.center" timestamp="1592237098738">
       <screen x="1920" y="0" width="1366" height="728" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1591079319666" />
-    <state width="1323" height="223" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1592214825415" />
-    <state width="1323" height="223" key="GridCell.Tab.1.left" timestamp="1592214825415">
+    <state width="1323" height="223" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1592237098738" />
+    <state width="1323" height="223" key="GridCell.Tab.1.left" timestamp="1592237098738">
       <screen x="1920" y="0" width="1366" height="728" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1591079319666" />
-    <state width="1323" height="223" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1592214825415" />
-    <state width="1323" height="223" key="GridCell.Tab.1.right" timestamp="1592214825415">
+    <state width="1323" height="223" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1592237098738" />
+    <state width="1323" height="223" key="GridCell.Tab.1.right" timestamp="1592237098738">
       <screen x="1920" y="0" width="1366" height="728" />
     </state>
     <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1591079319666" />
-    <state width="1323" height="223" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1592214825415" />
+    <state width="1323" height="223" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1592237098738" />
     <state x="2133" y="19" key="Maven.ArtifactSearchDialog" timestamp="1590119566586">
       <screen x="1920" y="0" width="1366" height="728" />
     </state>
@@ -461,12 +463,12 @@
     </state>
     <state x="195" y="17" key="SettingsEditor/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1590393838671" />
     <state x="2084" y="20" width="916" height="708" key="SettingsEditor/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1591861010050" />
-    <state x="2195" y="97" key="Vcs.Push.Dialog.v2" timestamp="1592202839247">
+    <state x="2195" y="97" key="Vcs.Push.Dialog.v2" timestamp="1592235707267">
       <screen x="1920" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="97" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1592189728056" />
     <state x="387" y="139" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1366.728@0.0.1920.1040" timestamp="1591079300032" />
-    <state x="2195" y="97" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1592202839247" />
+    <state x="2195" y="97" key="Vcs.Push.Dialog.v2/0.0.1920.1040/1920.0.1366.728@1920.0.1366.728" timestamp="1592235707267" />
     <state x="2310" y="97" width="660" height="534" key="find.popup" timestamp="1591857037510">
       <screen x="1920" y="0" width="1366" height="728" />
     </state>
